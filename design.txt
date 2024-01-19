@@ -1,0 +1,36 @@
+Main.js
+
+Import projects
+Import todo
+Import dom
+
+Array myLists
+
+
+
+Modules:
+
+Project.js
+Class List 
+constructor(listName, checked, todos array)
+
+editProjectName
+editChecked
+addToDo
+deleteToDo
+
+Todo.js
+
+Class Todo  
+constructor(todoName, description, dueDate, priority, notes, checked)
+
+editTitle
+editDescription
+editDueDate
+editPriority()
+	change colour
+editNotes
+editChecked
+
+
+dom.js
