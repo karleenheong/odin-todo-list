@@ -1,9 +1,15 @@
 import './styles.css';
+import Project from './project.js';
+import { displayProjects } from './dom.js';
 
 
-const testContent = document.querySelector("#content");
+let projects = [];
 
-let exampleText = document.createElement("p");
-exampleText.textContent = "Is this working as intended";
+let project0 = new Project("Shopping", 0);
+projects.push(project0);
 
-testContent.appendChild(exampleText);
+console.log(projects);
+console.log(project0.getTitle);
+console.log(project0.getChecked);
+
+displayProjects(projects);
