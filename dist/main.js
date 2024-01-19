@@ -1,1 +1,0 @@
-(()=>{const e=document.querySelector("#content");let t=document.createElement("p");t.textContent="Is this working as intended",e.appendChild(t)})();
