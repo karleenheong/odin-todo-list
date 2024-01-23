@@ -1,16 +1,32 @@
-const content = document.querySelector("#content");
+import projectHandler from "./projectHandler.js";
 
-export function displayAppName(){
+const content = document.querySelector("#content");
+const header = document.querySelector("#header");
+const projectList = document.querySelector("#projects");
+
+export function displayHeader(){
   let title = document.createElement("h1");
   title.className = "heading";
   title.textContent = "My Lists";
-  content.appendChild(title);
+  header.appendChild(title);
+
+  let btn = document.createElement("button");
+  btn.className = "newProjectButton";
+  btn.textContent = "+ New List";
+  btn.addEventListener("click", function(e){
+    projectHandler.createProject();
+    displayProjects(projectHandler.getProjects);
+  });
+  header.appendChild(btn);
 }
 
 export function displayProjects(list){
+  while(projectList.firstChild){
+    projectList.removeChild(projectList.firstChild);
+  }
   for(let i=0; i<list.length; i++){
     let projectPanel = document.createElement("div");
-    projectPanel.className  = "projectPanel";
+    projectPanel.className = "projectPanel";
     let project = document.createElement("button");
     project.className = "project";
     let checkbox = document.createElement("input");
@@ -25,6 +41,6 @@ export function displayProjects(list){
 
     projectPanel.appendChild(checkbox);
     projectPanel.appendChild(project);
-    content.appendChild(projectPanel);
+    projectList.appendChild(projectPanel);
   }
 }

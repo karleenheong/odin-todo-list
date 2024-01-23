@@ -22,9 +22,21 @@ body input {
 #content {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 400px;
   text-align: center;
   border: 2px solid blue;
+}
+
+#header,
+#projects {
+  border: 2px solid red;
+}
+
+.newProjectButton {
+  background-color: whitesmoke;
+  border-style: none;
+  padding: 8px 0;
+  width: 100%;
 }
 
 .projectPanel {
