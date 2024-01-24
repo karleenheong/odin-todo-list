@@ -2,9 +2,8 @@ import projectHandler from "./projectHandler.js";
 import trashIcon from "./trash.png";
 import backIcon from "./back.png";
 
-const content = document.querySelector("#content");
 const header = document.querySelector("#header");
-const projectList = document.querySelector("#projects");
+const listArea = document.querySelector("#listArea");
 
 //---------Home screen-----------
 export function displayHeader(){
@@ -25,7 +24,7 @@ export function displayHeader(){
 
 export function displayProjects(list){
   clearHeaderDiv();
-  clearProjectListDiv();
+  clearListAreaDiv();
   displayHeader();
   for(let i=0; i<list.length; i++){
     let projectPanel = document.createElement("div");
@@ -44,14 +43,14 @@ export function displayProjects(list){
 
     projectPanel.appendChild(checkbox);
     projectPanel.appendChild(projectBtn);
-    projectList.appendChild(projectPanel);
+    listArea.appendChild(projectPanel);
   }
 }
 
 //---------Project screen-----------
 function displayProject(project){
   clearHeaderDiv();
-  clearProjectListDiv();
+  clearListAreaDiv();
 
   //Header area
   let projectHeaderContainer = document.createElement("div");
@@ -60,11 +59,19 @@ function displayProject(project){
   let backBtn = document.createElement("button");
   backBtn.className = "screenIcon";
   backBtn.style.backgroundImage = `url(${backIcon})`;
+  backBtn.addEventListener("click", function(e){
+    displayProjects(projectHandler.getProjects);
+  });
   projectHeaderContainer.appendChild(backBtn);
   
-  let title = document.createElement("h1");
+  let title = document.createElement("button");
   title.className = "projectTitle";
   title.textContent = project.getTitle;
+  title.addEventListener("click", function(e){
+    let newName = prompt("Enter a new name for this list:");
+    projectHandler.editProject(project.getId, newName);
+    displayProject(project);
+  });
   projectHeaderContainer.appendChild(title);
 
   let trashBtn = document.createElement("button");
@@ -75,21 +82,23 @@ function displayProject(project){
       projectHandler.deleteProject(project.getId);
       displayProjects(projectHandler.getProjects);
     }
-  })
+  });
   projectHeaderContainer.appendChild(trashBtn);
   
   header.appendChild(projectHeaderContainer);
 
-  //Edit list button
+  //New todo button
   let btn = document.createElement("button");
-  btn.className = "editProject";
-  btn.textContent = "Edit list";
+  btn.className = "addTodo";
+  btn.textContent = "+ New Task";
   btn.addEventListener("click", function(e){
-    let newName = prompt("Enter a new name for this list:");
-    projectHandler.editProject(project.getId, newName);
-    displayProject(project);
+    project.createTodo();
+    displayTodos(project.getTodos);
   });
   header.appendChild(btn);
+
+  //Display todos
+  displayTodos(project.getTodos);
 }
 
 function clearHeaderDiv(){
@@ -98,8 +107,38 @@ function clearHeaderDiv(){
   }
 }
 
-function clearProjectListDiv(){
-  while(projectList.firstChild){
-    projectList.removeChild(projectList.firstChild);
+function clearListAreaDiv(){
+  while(listArea.firstChild){
+    listArea.removeChild(listArea.firstChild);
   }
+}
+
+//Todos area
+function displayTodos(list){
+  clearListAreaDiv();
+  for(let i=0; i<list.length; i++){
+    let todoPanel = document.createElement("div");
+    todoPanel.className = "todoPanel";
+    let todoBtn = document.createElement("button");
+    todoBtn.className = "todo";
+    let checkbox = document.createElement("input");
+    checkbox.className = "todoCheckbox";
+    checkbox.setAttribute("type", "checkbox");
+
+    todoBtn.textContent = list[i].getTitle;
+
+    todoBtn.addEventListener("click", function(e){
+      displayTodo(list[i]);
+    });
+
+    todoPanel.appendChild(checkbox);
+    todoPanel.appendChild(todoBtn);
+    listArea.appendChild(todoPanel);
+  }
+}
+
+//---------Todo screen-----------
+function displayTodo(todo){
+  clearHeaderDiv();
+  clearListAreaDiv();
 }

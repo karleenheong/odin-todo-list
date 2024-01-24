@@ -28,7 +28,9 @@ class ProjectHandler {
   }
 
   editProject(projectIndex, newName){
-    this.projects[projectIndex].setTitle = newName;
+    if(newName !== ""){
+      this.projects[projectIndex].setTitle = newName;
+    }
   }
 
   deleteProject(projectIndex){

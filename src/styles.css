@@ -28,16 +28,22 @@ body input {
   margin: 40px;
   color: #0053e3;
   font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.projectTitle {
+  border-style: none;
+  background-color: white;
 }
 
 #header,
-#projects {
+#listArea {
   border: 2px solid red;
   width: 100%;
 }
 
 .newProjectButton,
-.editProject {
+.addTodo {
   background-color: whitesmoke;
   border-style: none;
   padding: 8px 0;
@@ -47,13 +53,15 @@ body input {
   font-weight: 600;
 }
 
-.projectPanel {
+.projectPanel,
+.todoPanel {
   border: 1px solid green;
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
 
-.projectCheckbox {
+.projectCheckbox,
+.todoCheckbox {
   align-self: center;
   justify-self: center;
   width: 35px;
@@ -61,7 +69,8 @@ body input {
   border: solid green;
 }
 
-.project {
+.project,
+.todo {
   font-size: 1.5rem;
   text-align: left;
   background-color: white;
