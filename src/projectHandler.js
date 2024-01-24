@@ -25,6 +25,17 @@ class ProjectHandler {
     let newProject = new Project("untitled", this.projects.length);
     this.projects.push(newProject);
   }
+
+  editProject(projectIndex, name){
+    let proj = this.projects[projectIndex];
+    console.log(proj);
+    proj.setTitle = name;
+  }
+
+  deleteProject(projectIndex){
+    console.log("project deleted");
+    this.projects.splice(project, 1);
+  }
 }
 
 export default new ProjectHandler();

@@ -1,12 +1,17 @@
 export default class Project {
   constructor(title, index){
     this.title = title;
+    this.index = index;
     this.checked = false;
     this.todos = [];
   }
 
   get getTitle(){
     return this.title;
+  }
+
+  get getIndex(){
+    return this.index;
   }
   
   set setTitle(title){

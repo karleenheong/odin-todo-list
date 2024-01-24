@@ -5,10 +5,6 @@
   padding: 0;
 }
 
-h1 {
-  margin: 40px;
-}
-
 body {
   display: flex;
   justify-content: center;
@@ -27,16 +23,28 @@ body input {
   border: 2px solid blue;
 }
 
+.heading,
+.projectTitle {
+  margin: 40px;
+  color: #0053e3;
+  font-size: 2.5rem;
+}
+
 #header,
 #projects {
   border: 2px solid red;
+  width: 100%;
 }
 
-.newProjectButton {
+.newProjectButton,
+.editProject {
   background-color: whitesmoke;
   border-style: none;
   padding: 8px 0;
   width: 100%;
+  color: #00338c;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .projectPanel {
@@ -67,4 +75,19 @@ body input {
   background-color: whitesmoke;
 }
 
+.screenIcon {
+  width: 40px;
+  height: 40px;
+  margin: 40px 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-style: none;
+  background-color: white;
+}
+
+.projectScreenHeader {
+  display: flex;
+  border: 2px solid green;
+  justify-content: space-around;
+}
 
