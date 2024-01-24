@@ -93,12 +93,12 @@ function displayProject(project){
   btn.textContent = "+ New Task";
   btn.addEventListener("click", function(e){
     project.createTodo();
-    displayTodos(project.getTodos);
+    displayTodos(project);
   });
   header.appendChild(btn);
 
   //Display todos
-  displayTodos(project.getTodos);
+  displayTodos(project);
 }
 
 function clearHeaderDiv(){
@@ -114,8 +114,9 @@ function clearListAreaDiv(){
 }
 
 //Todos area
-function displayTodos(list){
+function displayTodos(project){
   clearListAreaDiv();
+  let list = project.getTodos;
   for(let i=0; i<list.length; i++){
     let todoPanel = document.createElement("div");
     todoPanel.className = "todoPanel";
@@ -128,7 +129,7 @@ function displayTodos(list){
     todoBtn.textContent = list[i].getTitle;
 
     todoBtn.addEventListener("click", function(e){
-      displayTodo(list[i]);
+      displayTodo(list[i], project);
     });
 
     todoPanel.appendChild(checkbox);
@@ -138,7 +139,42 @@ function displayTodos(list){
 }
 
 //---------Todo screen-----------
-function displayTodo(todo){
+function displayTodo(todo, project){
   clearHeaderDiv();
   clearListAreaDiv();
+
+  //Header area
+  let todoHeaderContainer = document.createElement("div");
+  todoHeaderContainer.className = "todoScreenHeader";
+
+  let backBtn = document.createElement("button");
+  backBtn.className = "screenIcon";
+  backBtn.style.backgroundImage = `url(${backIcon})`;
+  backBtn.addEventListener("click", function(e){
+    displayProject(project);
+  });
+  todoHeaderContainer.appendChild(backBtn);
+  
+  let title = document.createElement("button");
+  title.className = "todoTitle";
+  title.textContent = todo.getTitle;
+  title.addEventListener("click", function(e){
+    let newName = prompt("Enter a new name for this task:");
+    project.editTodo(todo.getId, newName);
+    displayTodo(todo, project);
+  });
+  todoHeaderContainer.appendChild(title);
+
+  let trashBtn = document.createElement("button");
+  trashBtn.className = "screenIcon";
+  trashBtn.style.backgroundImage = `url(${trashIcon})`;
+  trashBtn.addEventListener("click", function(e){
+    if(confirm("Are you sure you want to delete this task?")){
+      project.deleteTodo(todo.getId);
+      displayProject(project);
+    }
+  });
+  todoHeaderContainer.appendChild(trashBtn);
+  
+  header.appendChild(todoHeaderContainer);
 }

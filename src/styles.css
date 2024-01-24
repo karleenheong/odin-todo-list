@@ -23,6 +23,12 @@ body input {
   border: 2px solid blue;
 }
 
+#header,
+#listArea {
+  border: 2px solid red;
+  width: 100%;
+}
+
 .heading,
 .projectTitle {
   margin: 40px;
@@ -31,15 +37,17 @@ body input {
   font-weight: 600;
 }
 
-.projectTitle {
-  border-style: none;
-  background-color: white;
+.todoTitle {
+  margin: 40px;
+  color: black;
+  font-size: 2.2rem;
+  font-weight: 500;
 }
 
-#header,
-#listArea {
-  border: 2px solid red;
-  width: 100%;
+.projectTitle,
+.todoTitle {
+  border-style: none;
+  background-color: white;
 }
 
 .newProjectButton,
@@ -94,7 +102,8 @@ body input {
   background-color: white;
 }
 
-.projectScreenHeader {
+.projectScreenHeader,
+.todoScreenHeader {
   display: flex;
   border: 2px solid green;
   justify-content: space-around;
