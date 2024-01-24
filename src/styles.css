@@ -40,8 +40,8 @@ body input {
 .todoTitle {
   margin: 40px;
   color: black;
-  font-size: 2.2rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .projectTitle,
@@ -108,4 +108,17 @@ body input {
   border: 2px solid green;
   justify-content: space-around;
 }
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.descriptionBox {
+  width: auto;
+  padding: 40px 20px;
+  font-size: 1.2rem;
+  border-style: none;
+  font-style: italic;
+}
+
 

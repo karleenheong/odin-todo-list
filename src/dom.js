@@ -177,4 +177,24 @@ function displayTodo(todo, project){
   todoHeaderContainer.appendChild(trashBtn);
   
   header.appendChild(todoHeaderContainer);
+
+  //Todo fields and details area
+  let detailsDiv = document.createElement("div");
+
+    //Description box
+  let descriptionBox = document.createElement("input");
+  descriptionBox.className = "descriptionBox";
+  descriptionBox.setAttribute("type", "text");
+  if(todo.getDescription === ""){
+    descriptionBox.placeholder = "Enter a description...";
+  } else {
+    descriptionBox.value = todo.getDescription;
+  }
+  descriptionBox.addEventListener("input", function(e){
+    todo.setDescription = descriptionBox.value;
+  });
+
+  detailsDiv.appendChild(descriptionBox);
+  listArea.appendChild(detailsDiv);
+
 }
