@@ -24,7 +24,9 @@ export function displayHeader(){
 }
 
 export function displayProjects(list){
+  clearHeaderDiv();
   clearProjectListDiv();
+  displayHeader();
   for(let i=0; i<list.length; i++){
     let projectPanel = document.createElement("div");
     projectPanel.className = "projectPanel";
@@ -68,6 +70,12 @@ function displayProject(project){
   let trashBtn = document.createElement("button");
   trashBtn.className = "screenIcon";
   trashBtn.style.backgroundImage = `url(${trashIcon})`;
+  trashBtn.addEventListener("click", function(e){
+    if(confirm("Are you sure you want to delete this list?")){
+      projectHandler.deleteProject(project.getId);
+      displayProjects(projectHandler.getProjects);
+    }
+  })
   projectHeaderContainer.appendChild(trashBtn);
   
   header.appendChild(projectHeaderContainer);
@@ -78,7 +86,7 @@ function displayProject(project){
   btn.textContent = "Edit list";
   btn.addEventListener("click", function(e){
     let newName = prompt("Enter a new name for this list:");
-    projectHandler.editProject(project.getIndex, newName);
+    projectHandler.editProject(project.getId, newName);
     displayProject(project);
   });
   header.appendChild(btn);

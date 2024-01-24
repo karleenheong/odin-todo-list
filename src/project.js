@@ -1,7 +1,7 @@
 export default class Project {
-  constructor(title, index){
+  constructor(title, id){
     this.title = title;
-    this.index = index;
+    this.id = id;
     this.checked = false;
     this.todos = [];
   }
@@ -10,12 +10,16 @@ export default class Project {
     return this.title;
   }
 
-  get getIndex(){
-    return this.index;
-  }
-  
   set setTitle(title){
     this.title = title;
+  }
+
+  get getId(){
+    return this.id;
+  }
+
+  set setId(id){
+    this.id = id;
   }
 
   get getChecked(){

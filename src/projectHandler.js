@@ -24,17 +24,23 @@ class ProjectHandler {
   createProject(){
     let newProject = new Project("untitled", this.projects.length);
     this.projects.push(newProject);
+    console.log(this.projects);
   }
 
-  editProject(projectIndex, name){
-    let proj = this.projects[projectIndex];
-    console.log(proj);
-    proj.setTitle = name;
+  editProject(projectIndex, newName){
+    this.projects[projectIndex].setTitle = newName;
   }
 
   deleteProject(projectIndex){
-    console.log("project deleted");
-    this.projects.splice(project, 1);
+    this.projects.splice(projectIndex, 1);
+    this.reindexProjects();
+    console.log(this.projects);
+  }
+
+  reindexProjects(){
+    for(let i=0; i<this.projects.length; i++){
+      this.projects[i].setId = i;
+    }
   }
 }
 
