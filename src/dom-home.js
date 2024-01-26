@@ -42,6 +42,11 @@ export function displayProjects(list){
     projectPanel.appendChild(checkbox);
     projectPanel.appendChild(projectBtn);
     listArea.appendChild(projectPanel);
+
+    if(i%2 !== 0){
+      projectPanel.style.backgroundColor = "whitesmoke";
+      projectBtn.style.backgroundColor = "whitesmoke";
+    }
   }
 }
 

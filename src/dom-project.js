@@ -89,5 +89,10 @@ function displayTodos(project){
     todoPanel.appendChild(checkbox);
     todoPanel.appendChild(todoBtn);
     listArea.appendChild(todoPanel);
+
+    if(i%2 !== 0){
+      todoPanel.style.backgroundColor = "whitesmoke";
+      todoBtn.style.backgroundColor = "whitesmoke";
+    }
   }
 }
