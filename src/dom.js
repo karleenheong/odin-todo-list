@@ -56,6 +56,7 @@ function displayProject(project){
   let projectHeaderContainer = document.createElement("div");
   projectHeaderContainer.className = "projectScreenHeader";
 
+    //back button (left)
   let backBtn = document.createElement("button");
   backBtn.className = "screenIcon";
   backBtn.style.backgroundImage = `url(${backIcon})`;
@@ -64,16 +65,25 @@ function displayProject(project){
   });
   projectHeaderContainer.appendChild(backBtn);
   
-  let title = document.createElement("button");
+    //title (middle)
+  let titleDiv = document.createElement("div");
+  titleDiv.className = "titleDiv";
+  let title = document.createElement("input");
   title.className = "projectTitle";
-  title.textContent = project.getTitle;
-  title.addEventListener("click", function(e){
-    let newName = prompt("Enter a new name for this list:");
-    projectHandler.editProject(project.getId, newName);
-    displayProject(project);
+  title.setAttribute("type", "text");
+  title.placeholder = "untitled";
+  title.value = project.getTitle;
+  title.addEventListener("input", function(e){
+    if(title.value.length>=0 && title.value.replace(/\s/g, '').length==0){
+      project.setTitle = "untitled";
+    } else {
+      project.setTitle = title.value;
+    }
   });
-  projectHeaderContainer.appendChild(title);
+  titleDiv.appendChild(title);
+  projectHeaderContainer.appendChild(titleDiv);
 
+    //trash button (right)
   let trashBtn = document.createElement("button");
   trashBtn.className = "screenIcon";
   trashBtn.style.backgroundImage = `url(${trashIcon})`;
@@ -147,6 +157,7 @@ function displayTodo(todo, project){
   let todoHeaderContainer = document.createElement("div");
   todoHeaderContainer.className = "todoScreenHeader";
 
+    //back button (left)
   let backBtn = document.createElement("button");
   backBtn.className = "screenIcon";
   backBtn.style.backgroundImage = `url(${backIcon})`;
@@ -155,16 +166,25 @@ function displayTodo(todo, project){
   });
   todoHeaderContainer.appendChild(backBtn);
   
-  let title = document.createElement("button");
+    //title (middle)
+  let titleDiv = document.createElement("div");
+  titleDiv.className = "titleDiv";
+  let title = document.createElement("input");
   title.className = "todoTitle";
-  title.textContent = todo.getTitle;
-  title.addEventListener("click", function(e){
-    let newName = prompt("Enter a new name for this task:");
-    project.editTodo(todo.getId, newName);
-    displayTodo(todo, project);
+  title.setAttribute("type", "text");
+  title.placeholder = "unnamed task";
+  title.value = todo.getTitle;
+  title.addEventListener("input", function(e){
+    if(title.value.length>=0 && title.value.replace(/\s/g, '').length==0){
+      todo.setTitle = "unnamed task";
+    } else {
+      todo.setTitle = title.value;
+    }
   });
-  todoHeaderContainer.appendChild(title);
+  titleDiv.appendChild(title);
+  todoHeaderContainer.appendChild(titleDiv);
 
+    //trash button (right)
   let trashBtn = document.createElement("button");
   trashBtn.className = "screenIcon";
   trashBtn.style.backgroundImage = `url(${trashIcon})`;

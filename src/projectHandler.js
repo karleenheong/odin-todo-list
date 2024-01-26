@@ -27,12 +27,6 @@ class ProjectHandler {
     console.log(this.projects);
   }
 
-  editProject(projectIndex, newName){
-    if(newName !== ""){
-      this.projects[projectIndex].setTitle = newName;
-    }
-  }
-
   deleteProject(projectIndex){
     this.projects.splice(projectIndex, 1);
     this.reindexProjects();

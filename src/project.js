@@ -43,12 +43,6 @@ export default class Project {
     this.todos.push(newTodo);
   }
 
-  editTodo(todoIndex, newName){
-    if(newName !== ""){
-      this.todos[todoIndex].setTitle = newName;
-    }
-  }
-
   deleteTodo(todoIndex){
     this.todos.splice(todoIndex, 1);
     this.reindexTodos();
