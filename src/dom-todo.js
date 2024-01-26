@@ -2,6 +2,7 @@ import trashIcon from "./trash.png";
 import backIcon from "./back.png";
 import {clearHeaderDiv, clearListAreaDiv} from "./dom-home";
 import {displayProject} from "./dom-project";
+import {formatDistance, isValid, isToday} from "date-fns";
 
 //---------Todo screen-----------
 export function displayTodo(todo, project){
@@ -71,4 +72,64 @@ export function displayTodo(todo, project){
 
   detailsDiv.appendChild(descriptionBox);
   listArea.appendChild(detailsDiv);
+
+    //Due date area
+  
+  let dateDiv = document.createElement("div");
+  dateDiv.className = "dateDiv";
+
+  let dueInText = document.createElement("p");
+  dueInText.className = "dueInText";
+  dueInText.textContent = "Due date";
+
+  let dueDate = document.createElement("input");
+  dueDate.className = "dueDate";
+  dueDate.setAttribute("type", "date");
+  let todaysDate = new Date();
+  todaysDate.setHours(0,0,0,0);
+  let chosenDate;
+
+  if(todo.getDueDate === ""){
+    chosenDate = new Date();
+    chosenDate.setHours(0,0,0,0);
+  } else {
+    chosenDate = todo.getDueDate;
+    let year = chosenDate.getFullYear().toString();
+    let month = (chosenDate.getMonth() + 1).toString();
+    if(month.length < 2){
+      month = "0"+ month;
+    }
+    let day = chosenDate.getDate().toString();
+    if(day.length < 2){
+      day = "0" + day;
+    }
+    dueDate.value = `${year}-${month}-${day}`;
+    chosenDate.setHours(0,0,0,0);
+    showDaysDue(todaysDate, chosenDate, dueInText);
+  }
+
+  dueDate.addEventListener("input", function(e){
+    chosenDate = new Date(dueDate.value);
+    chosenDate.setHours(0,0,0,0);
+    if(isValid(chosenDate)){
+      if(isToday(chosenDate)){
+        dueInText.textContent = "Due TODAY";
+      } else {
+        showDaysDue(todaysDate, chosenDate, dueInText);
+      }
+      todo.setDueDate = chosenDate;
+    }
+  });
+
+  dateDiv.appendChild(dueInText);
+  dateDiv.appendChild(dueDate);
+  listArea.appendChild(dateDiv);
+  
+}
+
+function showDaysDue(todaysDate, chosenDate, dueInText){
+  let daysTillDue = formatDistance(chosenDate, todaysDate, {
+    addSuffix: true
+  });
+  dueInText.textContent = `Due ${daysTillDue}`;
 }

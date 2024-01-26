@@ -134,4 +134,30 @@ textarea:focus, input:focus {
   font-style: italic;
 }
 
+.dateDiv {
+  display: flex;
+  flex-direction: column;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
+  gap: 20px;
+  color: black;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+.dueInText {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0053e3;
+}
+
+.dueDate {
+  height: auto;
+  width: 175px;
+  font-size: 1.2rem;
+  background-color: whitesmoke;
+}
+
 
