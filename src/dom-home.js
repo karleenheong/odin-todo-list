@@ -1,5 +1,6 @@
 import projectHandler from "./projectHandler.js";
 import {displayProject} from "./dom-project.js";
+import createCheckbox from "./checkbox.js";
 
 const header = document.querySelector("#header");
 const listArea = document.querySelector("#listArea");
@@ -30,9 +31,7 @@ export function displayProjects(list){
     projectPanel.className = "projectPanel";
     let projectBtn = document.createElement("button");
     projectBtn.className = "project";
-    let checkbox = document.createElement("input");
-    checkbox.className = "projectCheckbox";
-    checkbox.setAttribute("type", "checkbox");
+    let checkbox = new createCheckbox(list[i].getTitle + i);
 
     projectBtn.textContent = list[i].getTitle;
 

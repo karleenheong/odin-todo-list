@@ -1,6 +1,7 @@
 import trashIcon from "./trash.png";
 import backIcon from "./back.png";
 import projectHandler from "./projectHandler.js";
+import createCheckbox from "./checkbox.js";
 import {clearHeaderDiv, clearListAreaDiv, displayProjects} from "./dom-home";
 import {displayTodo} from "./dom-todo.js";
 
@@ -77,9 +78,7 @@ function displayTodos(project){
     todoPanel.className = "todoPanel";
     let todoBtn = document.createElement("button");
     todoBtn.className = "todo";
-    let checkbox = document.createElement("input");
-    checkbox.className = "todoCheckbox";
-    checkbox.setAttribute("type", "checkbox");
+    let checkbox = new createCheckbox(list[i].getTitle + i);
 
     todoBtn.textContent = list[i].getTitle;
 
