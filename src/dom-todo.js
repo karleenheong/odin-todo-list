@@ -74,7 +74,6 @@ export function displayTodo(todo, project){
   listArea.appendChild(detailsDiv);
 
     //Due date area
-  
   let dateDiv = document.createElement("div");
   dateDiv.className = "dateDiv";
 
@@ -123,10 +122,24 @@ export function displayTodo(todo, project){
 
   dateDiv.appendChild(dueInText);
   dateDiv.appendChild(dueDate);
-  listArea.appendChild(dateDiv);
-  
+  detailsDiv.appendChild(dateDiv);
+
+  //Notes box
+  let notesBox = document.createElement("textarea");
+  notesBox.className = "notesBox";
+  if(todo.getNotes === ""){
+    notesBox.placeholder = "Notes...";
+  } else {
+    notesBox.value = todo.getNotes;
+  }
+  notesBox.addEventListener("input", function(e){
+    todo.setNotes = notesBox.value;
+  });
+
+  detailsDiv.appendChild(notesBox);
 }
 
+//Functions used more than once
 function showDaysDue(todaysDate, chosenDate, dueInText){
   let daysTillDue = formatDistance(chosenDate, todaysDate, {
     addSuffix: true
