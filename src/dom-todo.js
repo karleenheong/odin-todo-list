@@ -1,5 +1,6 @@
 import trashIcon from "./trash.png";
 import backIcon from "./back.png";
+import createCheckbox from "./checkbox.js";
 import {clearHeaderDiv, clearListAreaDiv} from "./dom-home";
 import {displayProject} from "./dom-project";
 import {formatDistance, isValid, isToday} from "date-fns";
@@ -137,6 +138,20 @@ export function displayTodo(todo, project){
   });
 
   detailsDiv.appendChild(notesBox);
+
+  //Priority and Complete checkboxes
+  let todoCheckboxesDiv = document.createElement("div");
+  todoCheckboxesDiv.className = "todoCheckboxesDiv";
+  let priorityCheckbox = new createCheckbox("p");
+  let completedCheckbox = new createCheckbox("c");
+
+  todoCheckboxesDiv.appendChild(priorityCheckbox);
+  todoCheckboxesDiv.appendChild(completedCheckbox);
+  listArea.appendChild(todoCheckboxesDiv);
+
+  let labels = document.querySelectorAll("label");
+  labels[0].textContent = "Priority";
+  labels[1].textContent = "Complete";
 }
 
 //Functions used more than once

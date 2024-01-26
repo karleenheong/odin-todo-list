@@ -31,7 +31,7 @@ input {
   width: 500px;
   text-align: center;
   background-color: white;
-  margin-top: 5vh;
+  margin-top: 3.2vh;
   border-radius: 20px;
   border: 6px solid black;
   overflow: hidden;
@@ -39,7 +39,6 @@ input {
 
 #header,
 #listArea {
-  /* border: 2px solid red; */
   width: 100%;
 }
 
@@ -177,13 +176,30 @@ textarea:focus, input:focus {
   text-align: left;
 }
 
+.todoCheckboxesDiv {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30%;
+  gap: 10px;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+.todoCheckboxesDiv > .checkboxContainer {
+  justify-content: left;
+}
+
+.todoCheckboxesDiv label {
+  font-size: 1.5rem;
+  align-items: center;
+}
+
 
 /* Checkbox Stuff */
 .checkboxContainer {
   display: flex;
   align-items: center;
   justify-content: right;
-  /* border: 2px solid purple; */
   width: 100%;
 }
 
