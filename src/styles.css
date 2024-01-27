@@ -127,7 +127,8 @@ textarea:focus, input:focus {
   color: black;
 }
 
-.project.completed {
+.project.completed,
+.todo.completed {
   color: grey;
   text-decoration: line-through;
 }

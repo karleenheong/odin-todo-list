@@ -82,8 +82,10 @@ function displayTodos(project){
     
     const actualCheckbox = checkbox.querySelector("input[type=checkbox]");
     actualCheckbox.checked = list[i].getComplete;
+    checkStrikethrough(list[i], todoBtn);
     actualCheckbox.addEventListener("change", function(){
       list[i].setComplete = this.checked;
+      checkStrikethrough(list[i], todoBtn);
     })
 
     todoBtn.textContent = list[i].getTitle;
@@ -99,6 +101,16 @@ function displayTodos(project){
     if(i%2 !== 0){
       todoPanel.style.backgroundColor = "whitesmoke";
       todoBtn.style.backgroundColor = "whitesmoke";
+    }
+  }
+}
+
+function checkStrikethrough(todo, todoBtn){
+  if(todo.getComplete){
+    todoBtn.classList.add("completed");
+  } else {
+    if(todoBtn.classList.contains("completed")){
+      todoBtn.classList.remove("completed");
     }
   }
 }
