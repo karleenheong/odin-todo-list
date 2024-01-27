@@ -32,14 +32,16 @@ export function displayProjects(list){
     let projectBtn = document.createElement("button");
     projectBtn.className = "project";
     let checkbox = new createCheckbox(list[i].getTitle + i);
-    
+
     const actualCheckbox = checkbox.querySelector("input[type=checkbox]");
     actualCheckbox.checked = list[i].getComplete;
     actualCheckbox.addEventListener("change", function(){
       list[i].setComplete = this.checked;
+      checkStrikethrough(list[i], projectBtn);
     })
 
     projectBtn.textContent = list[i].getTitle;
+    checkStrikethrough(list[i], projectBtn);
 
     projectBtn.addEventListener("click", function(e){
       displayProject(list[i]);
@@ -52,6 +54,16 @@ export function displayProjects(list){
     if(i%2 !== 0){
       projectPanel.style.backgroundColor = "whitesmoke";
       projectBtn.style.backgroundColor = "whitesmoke";
+    }
+  }
+}
+
+function checkStrikethrough(project, projectBtn){
+  if(project.getComplete){
+    projectBtn.classList.add("completed");
+  } else {
+    if(projectBtn.classList.contains("completed")){
+      projectBtn.classList.remove("completed");
     }
   }
 }

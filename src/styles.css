@@ -123,6 +123,13 @@ textarea:focus, input:focus {
   height: 100%;
   width: 100%;
   padding: 25px 50px;
+  text-decoration: none;
+  color: black;
+}
+
+.project.completed {
+  color: grey;
+  text-decoration: line-through;
 }
 
 /* Todo Screen */
