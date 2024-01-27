@@ -148,6 +148,17 @@ export function displayTodo(todo, project){
   let labels = document.querySelectorAll("label");
   labels[0].textContent = "Priority";
   labels[1].textContent = "Complete";
+
+  let checkboxes = document.querySelectorAll("input[type=checkbox");
+  checkboxes[0].checked = todo.getPriority;
+  checkboxes[1].checked = todo.getComplete;
+
+  checkboxes[0].addEventListener("change", function(){
+    todo.setPriority = this.checked;
+  });
+  checkboxes[1].addEventListener("change", function(){
+    todo.setComplete = this.checked;
+  });
 }
 
 //Functions used more than once

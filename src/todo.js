@@ -6,7 +6,7 @@ export default class Todo {
     this.dueDate = "";
     this.priority = false;
     this.notes = "";
-    this.checked = false;
+    this.complete = false;
   }
 
   get getTitle(){
@@ -57,11 +57,11 @@ export default class Todo {
     this.notes = words;
   }
 
-  get getChecked(){
-    return this.checked;
+  get getComplete(){
+    return this.complete;
   }
 
-  set setChecked(checked){
-    this.checked = checked;
+  set setComplete(complete){
+    this.complete = complete;
   }
 }
