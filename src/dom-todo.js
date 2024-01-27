@@ -112,11 +112,7 @@ export function displayTodo(todo, project){
     chosenDate = new Date(dueDate.value);
     chosenDate.setHours(0,0,0,0);
     if(isValid(chosenDate)){
-      if(isToday(chosenDate)){
-        dueInText.textContent = "Due TODAY";
-      } else {
-        showDaysDue(todaysDate, chosenDate, dueInText);
-      }
+      showDaysDue(todaysDate, chosenDate, dueInText);
       todo.setDueDate = chosenDate;
     }
   });
@@ -156,8 +152,12 @@ export function displayTodo(todo, project){
 
 //Functions used more than once
 function showDaysDue(todaysDate, chosenDate, dueInText){
-  let daysTillDue = formatDistance(chosenDate, todaysDate, {
-    addSuffix: true
-  });
-  dueInText.textContent = `Due ${daysTillDue}`;
+  if(isToday(chosenDate)){
+    dueInText.textContent = "Due TODAY";
+  } else {
+    let daysTillDue = formatDistance(chosenDate, todaysDate, {
+      addSuffix: true
+    });
+    dueInText.textContent = `Due ${daysTillDue}`;
+  }
 }
