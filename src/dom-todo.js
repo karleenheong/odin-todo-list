@@ -145,18 +145,21 @@ export function displayTodo(todo, project){
   todoCheckboxesDiv.appendChild(completedCheckbox);
   listArea.appendChild(todoCheckboxesDiv);
 
-  let labels = document.querySelectorAll("label");
-  labels[0].textContent = "Priority";
-  labels[1].textContent = "Complete";
+  const priorityLabel = priorityCheckbox.querySelector("label");
+  const completedLabel = completedCheckbox.querySelector("label");
+  priorityLabel.textContent = "Priority";
+  completedLabel.textContent = "Complete";
 
-  let checkboxes = document.querySelectorAll("input[type=checkbox");
-  checkboxes[0].checked = todo.getPriority;
-  checkboxes[1].checked = todo.getComplete;
+  const priorityActualCheckbox = priorityCheckbox.querySelector("input[type=checkbox]");
+  const completedActualCheckbox = completedCheckbox.querySelector("input[type=checkbox]");
 
-  checkboxes[0].addEventListener("change", function(){
+  priorityActualCheckbox.checked = todo.getPriority;
+  completedActualCheckbox.checked = todo.getComplete;
+
+  priorityActualCheckbox.addEventListener("change", function(){
     todo.setPriority = this.checked;
   });
-  checkboxes[1].addEventListener("change", function(){
+  completedActualCheckbox.addEventListener("change", function(){
     todo.setComplete = this.checked;
   });
 }

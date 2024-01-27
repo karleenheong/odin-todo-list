@@ -4,7 +4,7 @@ export default class Project {
   constructor(title, id){
     this.title = title;
     this.id = id;
-    this.checked = false;
+    this.complete = false;
     this.todos = [];
   }
 
@@ -26,12 +26,12 @@ export default class Project {
     this.id = id;
   }
 
-  get getChecked(){
-    return this.checked;
+  get getComplete(){
+    return this.complete;
   }
 
-  set setChecked(checked){
-    this.checked = checked;
+  set setComplete(complete){
+    this.complete = complete;
   }
 
   get getTodos(){

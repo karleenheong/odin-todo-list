@@ -79,6 +79,12 @@ function displayTodos(project){
     let todoBtn = document.createElement("button");
     todoBtn.className = "todo";
     let checkbox = new createCheckbox(list[i].getTitle + i);
+    
+    const actualCheckbox = checkbox.querySelector("input[type=checkbox]");
+    actualCheckbox.checked = list[i].getComplete;
+    actualCheckbox.addEventListener("change", function(){
+      list[i].setComplete = this.checked;
+    })
 
     todoBtn.textContent = list[i].getTitle;
 

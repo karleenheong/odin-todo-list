@@ -32,6 +32,12 @@ export function displayProjects(list){
     let projectBtn = document.createElement("button");
     projectBtn.className = "project";
     let checkbox = new createCheckbox(list[i].getTitle + i);
+    
+    const actualCheckbox = checkbox.querySelector("input[type=checkbox]");
+    actualCheckbox.checked = list[i].getComplete;
+    actualCheckbox.addEventListener("change", function(){
+      list[i].setComplete = this.checked;
+    })
 
     projectBtn.textContent = list[i].getTitle;
 
