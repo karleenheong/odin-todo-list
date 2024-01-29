@@ -74,29 +74,37 @@ function displayTodos(project){
   clearListAreaDiv();
   let list = project.getTodos;
   for(let i=0; i<list.length; i++){
+    //todo panel
     let todoPanel = document.createElement("div");
     todoPanel.className = "todoPanel";
     let todoBtn = document.createElement("button");
     todoBtn.className = "todo";
     let checkbox = new createCheckbox(list[i].getTitle + i);
+
+    //due date div
+    let dueDate = document.createElement("div");
+    dueDate.className = "dueDateDivProject";
+    dueDate.textContent = list[i].getDueDateText;
     
+    //checkbox for todo
     const actualCheckbox = checkbox.querySelector("input[type=checkbox]");
     actualCheckbox.checked = list[i].getComplete;
-    checkStrikethrough(list[i], todoBtn);
+    checkStrikethrough(list[i], todoBtn, dueDate);
     actualCheckbox.addEventListener("change", function(){
       list[i].setComplete = this.checked;
-      checkStrikethrough(list[i], todoBtn);
+      checkStrikethrough(list[i], todoBtn, dueDate);
       changePriorityColor(list[i], todoBtn, todoPanel);
     })
 
+    //todo button with project name
     todoBtn.textContent = list[i].getTitle;
-
     todoBtn.addEventListener("click", function(e){
       displayTodo(list[i], project);
     });
 
     todoPanel.appendChild(checkbox);
     todoPanel.appendChild(todoBtn);
+    todoPanel.appendChild(dueDate);
     listArea.appendChild(todoPanel);
 
     changePriorityColor(list[i], todoBtn, todoPanel);
@@ -108,12 +116,16 @@ function displayTodos(project){
   }
 }
 
-function checkStrikethrough(todo, todoBtn){
+function checkStrikethrough(todo, todoBtn, dueDate){
   if(todo.getComplete){
     todoBtn.classList.add("completed");
+    dueDate.classList.add("completed");
   } else {
     if(todoBtn.classList.contains("completed")){
       todoBtn.classList.remove("completed");
+    }
+    if(dueDate.classList.contains("completed")){
+      dueDate.classList.remove("completed");
     }
   }
 }

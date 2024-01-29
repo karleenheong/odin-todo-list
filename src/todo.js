@@ -7,6 +7,7 @@ export default class Todo {
     this.priority = false;
     this.notes = "";
     this.complete = false;
+    this.dueDateText = "";
   }
 
   get getTitle(){
@@ -39,6 +40,14 @@ export default class Todo {
 
   set setDueDate(date){
     this.dueDate = date;
+  }
+
+  get getDueDateText(){
+    return this.dueDateText;
+  }
+
+  set setDueDateText(string){
+    this.dueDateText = string;
   }
 
   get getPriority(){

@@ -105,14 +105,14 @@ export function displayTodo(todo, project){
     }
     dueDate.value = `${year}-${month}-${day}`;
     chosenDate.setHours(0,0,0,0);
-    showDaysDue(todaysDate, chosenDate, dueInText);
+    showDaysDue(todaysDate, chosenDate, dueInText, todo);
   }
 
   dueDate.addEventListener("input", function(e){
     chosenDate = new Date(dueDate.value);
     chosenDate.setHours(0,0,0,0);
     if(isValid(chosenDate)){
-      showDaysDue(todaysDate, chosenDate, dueInText);
+      showDaysDue(todaysDate, chosenDate, dueInText, todo);
       todo.setDueDate = chosenDate;
     }
   });
@@ -165,13 +165,18 @@ export function displayTodo(todo, project){
 }
 
 //Functions used more than once
-function showDaysDue(todaysDate, chosenDate, dueInText){
+function showDaysDue(todaysDate, chosenDate, dueInText, todo){
+  let text;
   if(isToday(chosenDate)){
-    dueInText.textContent = "Due TODAY";
+    text = "Due TODAY";
+    dueInText.textContent = text;
+    todo.setDueDateText = text;
   } else {
     let daysTillDue = formatDistance(chosenDate, todaysDate, {
       addSuffix: true
     });
-    dueInText.textContent = `Due ${daysTillDue}`;
+    text = `Due ${daysTillDue}`;
+    dueInText.textContent = text;
+    todo.setDueDateText = text;
   }
 }

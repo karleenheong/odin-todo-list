@@ -23,7 +23,7 @@ input {
 }
 
 /* div {
-  border: 2px solid purple;
+  border: 1px solid purple;
 } */
 
 textarea:focus, input:focus {
@@ -108,10 +108,14 @@ textarea:focus, input:focus {
 }
 
 /* List Rows */
-.projectPanel,
-.todoPanel {
+.projectPanel {
   display: grid;
   grid-template-columns: 1fr 3fr;
+}
+
+.todoPanel {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 0.75fr;
 }
 
 .project,
@@ -133,9 +137,22 @@ textarea:focus, input:focus {
   text-decoration: line-through;
 }
 
+.dueDateDivProject.completed {
+  color: grey;
+}
+
 .todo.priority,
 .todoPanel.priority {
-  background-color: rgb(146, 255, 146);
+  background-color: rgb(132, 249, 253);
+  /* background-color: rgb(245, 254, 79); */
+  /* background-color: rgb(152, 249, 152); */
+}
+
+.dueDateDivProject {
+  font-size: 1.1rem;
+  align-self: center;
+  font-weight: 400;
+  color: #4385F4;
 }
 
 /* Todo Screen */
