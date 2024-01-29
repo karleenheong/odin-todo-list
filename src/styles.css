@@ -133,6 +133,11 @@ textarea:focus, input:focus {
   text-decoration: line-through;
 }
 
+.todo.priority,
+.todoPanel.priority {
+  background-color: rgb(146, 255, 146);
+}
+
 /* Todo Screen */
 .detailsDiv {
   width: 100%;

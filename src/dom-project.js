@@ -86,6 +86,7 @@ function displayTodos(project){
     actualCheckbox.addEventListener("change", function(){
       list[i].setComplete = this.checked;
       checkStrikethrough(list[i], todoBtn);
+      changePriorityColor(list[i], todoBtn, todoPanel);
     })
 
     todoBtn.textContent = list[i].getTitle;
@@ -97,6 +98,8 @@ function displayTodos(project){
     todoPanel.appendChild(checkbox);
     todoPanel.appendChild(todoBtn);
     listArea.appendChild(todoPanel);
+
+    changePriorityColor(list[i], todoBtn, todoPanel);
 
     if(i%2 !== 0){
       todoPanel.style.backgroundColor = "whitesmoke";
@@ -112,5 +115,15 @@ function checkStrikethrough(todo, todoBtn){
     if(todoBtn.classList.contains("completed")){
       todoBtn.classList.remove("completed");
     }
+  }
+}
+
+function changePriorityColor(todo, todoBtn, todoPanel){
+  if(todo.getPriority && !todo.getComplete){
+    todoBtn.classList.add("priority");
+    todoPanel.classList.add("priority");
+  } else {
+    todoBtn.classList.remove("priority");
+    todoPanel.classList.remove("priority");
   }
 }
