@@ -1,4 +1,5 @@
 import Todo from './todo.js';
+import { saveProject } from './dataHandler.js';
 
 export default class Project {
   constructor(title, id){
@@ -41,6 +42,7 @@ export default class Project {
   createTodo(){
     let newTodo = new Todo("unnamed task", this.todos.length);
     this.todos.push(newTodo);
+    saveProject(this);
   }
 
   deleteTodo(todoIndex){

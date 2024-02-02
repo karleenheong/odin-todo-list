@@ -8,9 +8,9 @@ export function retrieveProject(idString){
 
 export function deleteProjectData(idString){
   localStorage.removeItem(idString);
-  console.log("removed");
 }
 
 export function deleteAllData(){
   localStorage.clear();
 }
+
