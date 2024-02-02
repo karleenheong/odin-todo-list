@@ -53,4 +53,17 @@ export default class Project {
       this.todos[i].setId = i;
     }
   }
+
+  retrieveAllTodos(todos){
+    for(let i=0; i<todos.length; i++){
+      let restoredTodo = new Todo(todos[i]["title"], todos[i]["id"]);
+      restoredTodo.setDescription = todos[i]["description"];
+      restoredTodo.setDueDate = todos[i]["dueDate"];
+      restoredTodo.setPriority = todos[i]["priority"];
+      restoredTodo.setNotes = todos[i]["notes"];
+      restoredTodo.setComplete = todos[i]["complete"];
+      restoredTodo.setDueDateText = todos[i]["dueDateText"];
+      this.todos.push(restoredTodo);
+    }
+  }
 }
