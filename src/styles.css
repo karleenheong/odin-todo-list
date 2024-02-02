@@ -141,6 +141,11 @@ textarea:focus, input:focus {
   color: grey;
 }
 
+.todo.oddRow,
+.todoPanel.oddRow {
+  background-color: whitesmoke;
+}
+
 .todo.priority,
 .todoPanel.priority {
   background-color: rgb(132, 249, 253);

@@ -4,6 +4,7 @@ import projectHandler from "./projectHandler.js";
 import createCheckbox from "./checkbox.js";
 import {clearHeaderDiv, clearListAreaDiv, displayProjects} from "./dom-home";
 import {displayTodo} from "./dom-todo.js";
+import { saveProject } from "./dataHandler.js";
 
 //---------Project screen-----------
 export function displayProject(project){
@@ -37,6 +38,7 @@ export function displayProject(project){
     } else {
       project.setTitle = title.value;
     }
+    saveProject(project);
   });
   titleDiv.appendChild(title);
   projectHeaderContainer.appendChild(titleDiv);
@@ -107,12 +109,12 @@ function displayTodos(project){
     todoPanel.appendChild(dueDate);
     listArea.appendChild(todoPanel);
 
-    changePriorityColor(list[i], todoBtn, todoPanel);
-
     if(i%2 !== 0){
-      todoPanel.style.backgroundColor = "whitesmoke";
-      todoBtn.style.backgroundColor = "whitesmoke";
+      todoPanel.classList.add("oddRow");
+      todoBtn.classList.add("oddRow");
     }
+
+    changePriorityColor(list[i], todoBtn, todoPanel);
   }
 }
 

@@ -71,6 +71,7 @@ export function displayTodo(todo, project){
   }
   descriptionBox.addEventListener("input", function(e){
     todo.setDescription = descriptionBox.value;
+    saveProject(project);
   });
 
   detailsDiv.appendChild(descriptionBox);
@@ -116,6 +117,7 @@ export function displayTodo(todo, project){
     if(isValid(chosenDate)){
       showDaysDue(todaysDate, chosenDate, dueInText, todo);
       todo.setDueDate = chosenDate;
+      saveProject(project);
     }
   });
 
@@ -133,6 +135,7 @@ export function displayTodo(todo, project){
   }
   notesBox.addEventListener("input", function(e){
     todo.setNotes = notesBox.value;
+    saveProject(project);
   });
 
   detailsDiv.appendChild(notesBox);
@@ -160,9 +163,11 @@ export function displayTodo(todo, project){
 
   priorityActualCheckbox.addEventListener("change", function(){
     todo.setPriority = this.checked;
+    saveProject(project);
   });
   completedActualCheckbox.addEventListener("change", function(){
     todo.setComplete = this.checked;
+    saveProject(project);
   });
 }
 

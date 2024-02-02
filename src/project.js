@@ -62,7 +62,9 @@ export default class Project {
     for(let i=0; i<todos.length; i++){
       let restoredTodo = new Todo(todos[i]["title"], todos[i]["id"]);
       restoredTodo.setDescription = todos[i]["description"];
-      restoredTodo.setDueDate = todos[i]["dueDate"];
+      if(todos[i]["dueDate"] !== ""){
+        restoredTodo.setDueDate = new Date(todos[i]["dueDate"]);
+      }
       restoredTodo.setPriority = todos[i]["priority"];
       restoredTodo.setNotes = todos[i]["notes"];
       restoredTodo.setComplete = todos[i]["complete"];
