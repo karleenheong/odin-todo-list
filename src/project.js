@@ -1,5 +1,5 @@
 import Todo from './todo.js';
-import { saveProject } from './dataHandler.js';
+import { deleteProjectData, saveProject } from './dataHandler.js';
 
 export default class Project {
   constructor(title, id){
@@ -51,9 +51,11 @@ export default class Project {
   }
 
   reindexTodos(){
+    deleteProjectData(this.id.toString());
     for(let i=0; i<this.todos.length; i++){
       this.todos[i].setId = i;
     }
+    saveProject(this);
   }
 
   retrieveAllTodos(todos){

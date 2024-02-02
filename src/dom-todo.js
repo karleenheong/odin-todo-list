@@ -4,6 +4,7 @@ import createCheckbox from "./checkbox.js";
 import {clearHeaderDiv, clearListAreaDiv} from "./dom-home";
 import {displayProject} from "./dom-project";
 import {formatDistance, isValid, isToday} from "date-fns";
+import { saveProject } from "./dataHandler.js";
 
 //---------Todo screen-----------
 export function displayTodo(todo, project){
@@ -37,6 +38,7 @@ export function displayTodo(todo, project){
     } else {
       todo.setTitle = title.value;
     }
+    saveProject(project);
   });
   titleDiv.appendChild(title);
   todoHeaderContainer.appendChild(titleDiv);
